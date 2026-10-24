@@ -1,0 +1,7 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="text-center py-5 my-5">
+    <h1 class="display-3 text-danger fw-bold"><%= status || 500 %></h1>
+    <h3 class="h4 text-light mb-3"><%= message || "Something went wrong" %></h3>
+    <a href="/listings" class="btn-minimal mt-3">&larr; Back to Venues</a>
+</div>

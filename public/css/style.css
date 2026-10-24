@@ -1,0 +1,585 @@
+/* ==========================================================================
+   Khelo - Minimalist Dark Theme
+   Clean Dark Sports Styling (Bootstrap 5 & Custom CSS)
+   ========================================================================== */
+
+:root {
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    /* Minimal Dark Palette */
+    --bg-dark: #121214;
+    --bg-card: #1c1c20;
+    --bg-input: #17171a;
+
+    --text-main: #f4f4f5;
+    --text-muted: #a1a1aa;
+    --text-dim: #71717a;
+
+    --border-color: #27272a;
+    --border-hover: #3f3f46;
+
+    --accent-color: #22c55e;
+    --accent-hover: #16a34a;
+
+    --radius: 10px;
+    --transition: all 0.2s ease-in-out;
+}
+
+/* Base Styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2.5rem 0 4rem;
+}
+
+/* Typography & Global Text Visibility in Dark Mode */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: var(--text-main);
+    margin-top: 0;
+}
+
+p {
+    color: var(--text-main);
+}
+
+a {
+    color: var(--text-main);
+    text-decoration: none;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.text-secondary-custom {
+    color: #d4d4d8 !important;
+}
+
+/* Navbar & Brand */
+.navbar-minimal {
+    background-color: rgba(18, 18, 20, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.85rem 0;
+}
+
+.brand-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.brand-logo:hover {
+    opacity: 0.9;
+}
+
+.brand-name {
+    font-size: 1.45rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+    font-family: var(--font-sans);
+}
+
+/* Buttons - Restored Original Aesthetic */
+.btn-minimal {
+    background-color: var(--accent-color);
+    color: #000000 !important;
+    font-weight: 700;
+    font-size: 0.88rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: var(--radius);
+    border: none;
+    transition: var(--transition);
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-minimal:hover {
+    background-color: var(--accent-hover);
+    color: #000000 !important;
+}
+
+.btn-secondary-minimal {
+    background-color: transparent;
+    color: var(--text-muted) !important;
+    border: 1px solid var(--border-color);
+    font-weight: 600;
+    font-size: 0.88rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: var(--radius);
+    transition: var(--transition);
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-secondary-minimal:hover {
+    background-color: #27272a;
+    color: #ffffff !important;
+    border-color: var(--border-hover);
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #e4e4e7 !important;
+    font-weight: 600;
+    font-size: 0.9rem;
+    background-color: #1c1c20;
+    border: 1px solid var(--border-color);
+    padding: 0.45rem 0.95rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.btn-back:hover {
+    background-color: #27272a;
+    color: #ffffff !important;
+    border-color: var(--border-hover);
+    transform: translateX(-2px);
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: var(--accent-color);
+    color: #000000;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.75rem;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: var(--transition);
+}
+
+.btn-submit:hover {
+    background-color: var(--accent-hover);
+}
+
+/* Page Header */
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.4rem;
+}
+
+.page-subtitle {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+/* Category Filter Bar */
+.category-filter-bar {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+}
+
+.filter-chip {
+    padding: 0.4rem 0.85rem;
+    border-radius: 20px;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.filter-chip:hover {
+    background-color: #27272a;
+    color: #ffffff;
+    border-color: var(--border-hover);
+}
+
+.filter-chip.active {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #000000;
+}
+
+/* Sport Color Accent Variations */
+.sport-cricket-football { --sport-accent: #22c55e; }
+.sport-basketball       { --sport-accent: #f97316; }
+.sport-badminton        { --sport-accent: #14b8a6; }
+.sport-volleyball       { --sport-accent: #f59e0b; }
+.sport-swimming         { --sport-accent: #3b82f6; }
+.sport-indoor           { --sport-accent: #8b5cf6; }
+
+/* Venue Card Component (Full Card Clickable Anchor) */
+.venue-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+.venue-card-link:hover {
+    color: inherit;
+}
+
+.venue-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-top: 3.5px solid var(--sport-accent, var(--accent-color));
+    border-radius: var(--radius);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+}
+
+.venue-card-link:hover .venue-card {
+    border-color: var(--sport-accent, var(--border-hover));
+    border-top-color: var(--sport-accent, var(--accent-color));
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+}
+
+.venue-card-img-wrap {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background-color: #17171a;
+    position: relative;
+}
+
+.venue-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.venue-card-link:hover .venue-card-img {
+    transform: scale(1.04);
+}
+
+.sport-color-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--sport-accent, var(--accent-color));
+    display: inline-block;
+    margin-right: 0.45rem;
+}
+
+.venue-card-body {
+    padding: 1.35rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.venue-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    color: var(--text-main);
+}
+
+.venue-card-footer {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.venue-price {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.btn-arrow {
+    color: var(--sport-accent, var(--accent-color));
+    font-weight: 800;
+    font-size: 1.1rem;
+    transition: transform 0.2s ease;
+}
+
+.venue-card-link:hover .btn-arrow {
+    transform: translateX(4px);
+}
+
+/* Home Page Styles */
+.hero-header {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 2rem;
+}
+
+/* Forms & Inputs */
+.form-container {
+    max-width: 580px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 2.25rem;
+}
+
+.form-group {
+    margin-bottom: 1.35rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 0.45rem;
+}
+
+.form-control,
+.form-select {
+    width: 100%;
+    background-color: var(--bg-input) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-main) !important;
+    border-radius: var(--radius) !important;
+    padding: 0.65rem 0.9rem !important;
+    font-size: 0.92rem !important;
+    font-family: inherit;
+}
+
+.form-control:focus,
+.form-select:focus {
+    outline: none !important;
+    border-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25) !important;
+    color: var(--text-main) !important;
+}
+
+.form-control::placeholder {
+    color: var(--text-dim);
+}
+
+/* Calendar Date Input Styling (Visible Native Datepicker in Dark Theme) */
+input[type="date"].calendar-input,
+input[type="date"].form-control {
+    background-color: var(--bg-input) !important;
+    color: #ffffff !important;
+    border: 1px solid var(--border-color) !important;
+    color-scheme: dark;
+    padding: 0.65rem 1rem !important;
+    font-weight: 500;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.85);
+    cursor: pointer;
+    font-size: 1.15rem;
+    margin-right: 0.25rem;
+}
+
+.date-picker-card,
+.slots-container {
+    background-color: #17171a;
+    border: 1px solid var(--border-color);
+}
+
+/* Show View */
+.show-wrapper {
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.show-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.show-img-box {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    background-color: #17171a;
+}
+
+.show-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.show-content {
+    padding: 2rem;
+}
+
+.info-row {
+    display: flex;
+    gap: 2rem;
+    margin: 1.5rem 0;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.info-block span {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.2rem;
+}
+
+.info-block strong {
+    font-size: 1.05rem;
+    color: var(--text-main);
+}
+
+/* Reviews Section */
+.reviews-container {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.review-form-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 1.75rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.review-form-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent-color);
+}
+
+.review-form-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    color: var(--text-main);
+}
+
+.review-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    transition: var(--transition);
+}
+
+.review-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+}
+
+.review-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #27272a;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border: 1px solid var(--border-color);
+}
+
+.review-comment-text {
+    color: #e4e4e7 !important; /* Visible light text in dark theme */
+    font-size: 0.92rem;
+    line-height: 1.55;
+    word-break: break-word;
+}
+
+/* Star Rating Select (Defaults to 0 stars selected) */
+.star-rating-select {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 0.35rem;
+    font-size: 1.6rem;
+    margin-top: 0.25rem;
+}
+
+.star-rating-select input[type="radio"] {
+    display: none;
+}
+
+.star-rating-select label {
+    color: #52525b; /* Unselected muted gray star */
+    cursor: pointer;
+    transition: color 0.15s ease, transform 0.15s ease;
+    display: inline-block;
+}
+
+.star-rating-select label:hover,
+.star-rating-select label:hover ~ label {
+    color: #fbbf24 !important;
+    transform: scale(1.15);
+}
+
+.star-rating-select input[type="radio"]:checked ~ label {
+    color: #f59e0b !important;
+}
+
+/* Footer */
+.footer-minimal {
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    margin-top: auto;
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .show-img-box {
+        height: 240px;
+    }
+}

@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-minimal sticky-top">
+    <div class="container">
+        <a class="navbar-brand brand-logo" href="/home">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-lightning-fill text-warning" viewBox="0 0 16 16">
+                <path
+                    d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641z" />
+            </svg>
+            <span class="brand-name">khelo.</span>
+        </a>
+
+        <!-- Mobile Toggler -->
+        <button class="navbar-toggler border-0 text-light" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <div class="d-flex align-items-center gap-2 ms-lg-3 me-auto mt-3 mt-lg-0">
+                <a href="/listings" class="btn-secondary-minimal">
+                    Venues
+                </a>
+                <a href="/listings/new" class="btn-minimal">
+                    Add Venue
+                </a>
+            </div>
+            <div class="d-flex gap-2 mt-3 mt-lg-0 ms-auto pe-0">
+                <% if (!currUser) { %>
+                    <a href="/login" class="btn-secondary-minimal">Login</a>
+                    <a href="/signup" class="btn-secondary-minimal">SignUp</a>
+                <% } else { %>
+                    <a href="/logout" class="btn-secondary-minimal">Logout</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</nav>

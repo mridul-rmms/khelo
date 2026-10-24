@@ -1,0 +1,73 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="mb-4">
+    <a href="/listings" class="btn-back">&larr; Back to Venues</a>
+</div>
+
+<div class="form-container">
+    <h2 class="h4 mb-1">Add New Venue</h2>
+    <p class="text-muted small mb-4">Enter venue details to create a new listing.</p>
+
+    <form method="post" action="/listings" class="needs-validation" novalidate>
+        <div class="form-group">
+            <label for="title" class="form-label">Venue Title</label>
+            <input type="text" id="title" name="listing[title]" class="form-control"
+                placeholder="e.g. City Sports Turf" required>
+            <div class="invalid-feedback">Please enter a venue title</div>
+        </div>
+
+        <div class="form-group">
+            <label for="sports" class="form-label">Sport Category</label>
+            <select id="sports" name="listing[sports]" class="form-select" required>
+                <option value="" disabled selected>Select a sport</option>
+                <option value="Cricket/Football">Cricket / Football</option>
+                <option value="Basketball">Basketball</option>
+                <option value="Badminton">Badminton</option>
+                <option value="Volleyball">Volleyball</option>
+                <option value="Swimming">Swimming</option>
+                <option value="Indoor Sports">Indoor Sports</option>
+            </select>
+            <div class="invalid-feedback">Please select a sport category</div>
+        </div>
+
+        <div class="form-group">
+            <label for="image" class="form-label">Image URL</label>
+            <input type="url" id="image" name="listing[image]" class="form-control"
+                placeholder="https://example.com/image.jpg">
+            <div class="invalid-feedback">Please enter a valid image URL</div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-6 form-group">
+                <label for="price" class="form-label">Price per Hour (&#8377;)</label>
+                <input type="number" id="price" name="listing[price]" min="0" class="form-control"
+                    placeholder="1000" required>
+                <div class="invalid-feedback">Please enter a valid price</div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="tel" id="phone" name="listing[phone]" class="form-control" placeholder="9876543210" required>
+                <div class="invalid-feedback">Please enter a valid phone number</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email" class="form-label">Contact Email</label>
+            <input type="email" id="email" name="listing[email]" class="form-control"
+                placeholder="contact@venue.com" required>
+            <div class="invalid-feedback">Please enter a valid contact email</div>
+        </div>
+
+        <div class="form-group">
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" name="listing[description]" rows="4" class="form-control"
+                placeholder="Tell us about the venue..." required></textarea>
+            <div class="invalid-feedback">Please enter a short description</div>
+        </div>
+
+        <button type="submit" class="btn-submit">
+            Create Venue
+        </button>
+    </form>
+</div>

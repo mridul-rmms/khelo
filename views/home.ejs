@@ -1,0 +1,133 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<%
+function getSportClass(sport) {
+    if (!sport) return 'sport-cricket-football';
+    if (sport.includes('Cricket') || sport.includes('Football')) return 'sport-cricket-football';
+    if (sport.includes('Basketball')) return 'sport-basketball';
+    if (sport.includes('Badminton')) return 'sport-badminton';
+    if (sport.includes('Volleyball')) return 'sport-volleyball';
+    if (sport.includes('Swimming')) return 'sport-swimming';
+    if (sport.includes('Indoor')) return 'sport-indoor';
+    return 'sport-cricket-football';
+}
+%>
+
+<!-- Header / Intro Banner -->
+<div class="page-header hero-header mb-4">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+        <div>
+            <h1 class="page-title">Find & Book Sports Grounds</h1>
+            <p class="page-subtitle">Turfs, badminton courts, cricket pitches, and arenas available in your city.</p>
+        </div>
+        <div class="d-flex flex-wrap gap-2">
+            <a href="/listings" class="btn-minimal">
+                Browse All Venues &rarr;
+            </a>
+            <% if (currUser) { %>
+                <a href="/listings/new" class="btn-secondary-minimal">
+                    + Add Venue
+                </a>
+            <% } else { %>
+                <a href="/signup" class="btn-secondary-minimal">
+                    Sign Up
+                </a>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<!-- Sports Category Filter Chips -->
+<div class="category-filter-bar mb-4 p-2 rounded-3 d-flex flex-wrap gap-2 align-items-center">
+    <span class="small fw-semibold text-muted px-2"><i class="fa-solid fa-filter me-1"></i> Quick Filter:</span>
+    <a href="/listings" class="filter-chip">
+        All
+    </a>
+    <a href="/listings?sport=Cricket/Football" class="filter-chip">
+        Cricket & Football
+    </a>
+    <a href="/listings?sport=Badminton" class="filter-chip">
+        Badminton
+    </a>
+    <a href="/listings?sport=Basketball" class="filter-chip">
+        Basketball
+    </a>
+    <a href="/listings?sport=Volleyball" class="filter-chip">
+        Volleyball
+    </a>
+    <a href="/listings?sport=Swimming" class="filter-chip">
+        Swimming
+    </a>
+    <a href="/listings?sport=Indoor%20Sports" class="filter-chip">
+        Indoor Sports
+    </a>
+</div>
+
+<!-- Featured / Popular Venues -->
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="h4 mb-0">Featured Venues</h2>
+    <a href="/listings" class="btn-secondary-minimal py-1 px-3 small">View All &rarr;</a>
+</div>
+
+<% if (typeof featuredListings !== 'undefined' && featuredListings && featuredListings.length > 0) { %>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
+        <% for(let loc of featuredListings) { %>
+            <div class="col">
+                <a href="/listings/<%= loc._id %>" class="venue-card-link">
+                    <div class="venue-card <%= getSportClass(loc.sports) %>">
+                        <div class="venue-card-img-wrap">
+                            <img src="<%= loc.image || 'https://www.revturf.com/wp-content/uploads/2022/05/Turf-football-gound-IMG_5312-2-1536x1152.jpg' %>" 
+                                 alt="<%= loc.title %>" 
+                                 class="venue-card-img" 
+                                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=800&q=80';">
+                        </div>
+
+                        <div class="venue-card-body">
+                            <h5 class="venue-card-title">
+                                <span class="sport-color-dot" title="<%= loc.sports || 'Sports' %>"></span>
+                                <%= loc.title %>
+                            </h5>
+                            <% if (loc.sports) { %>
+                                <div class="small text-muted mb-2"><%= loc.sports %></div>
+                            <% } %>
+                            <div class="venue-card-footer">
+                                <span class="venue-price">&#8377;<%= loc.price ? loc.price.toLocaleString("en-IN") : '0' %>/hour</span>
+                                <span class="btn-arrow">&rarr;</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        <% } %>
+    </div>
+<% } else { %>
+    <div class="text-center py-5 border border-secondary border-opacity-25 rounded-3 mb-5">
+        <h5 class="text-light">No venues listed yet</h5>
+        <p class="text-muted">Click "+ Add Venue" in the top bar to add the first listing.</p>
+    </div>
+<% } %>
+
+<!-- How It Works / Details -->
+<div class="mb-5 pt-3">
+    <h3 class="h5 mb-3">How Slot Booking Works</h3>
+    <div class="row g-3">
+        <div class="col-md-4">
+            <div class="p-3 rounded-3" style="background: var(--bg-card); border: 1px solid var(--border-color);">
+                <div class="fw-bold mb-1 text-light">1. Pick a Ground</div>
+                <div class="small text-muted">Browse verified turfs, courts, and sports grounds with clear pricing and photos.</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 rounded-3" style="background: var(--bg-card); border: 1px solid var(--border-color);">
+                <div class="fw-bold mb-1 text-light">2. Select Date & Slot</div>
+                <div class="small text-muted">Check real-time morning, afternoon, evening, or floodlit night slots.</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 rounded-3" style="background: var(--bg-card); border: 1px solid var(--border-color);">
+                <div class="fw-bold mb-1 text-light">3. Connect & Play</div>
+                <div class="small text-muted">Get direct manager phone and email details for seamless game coordination.</div>
+            </div>
+        </div>
+    </div>
+</div>

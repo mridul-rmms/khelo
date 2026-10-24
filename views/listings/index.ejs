@@ -1,0 +1,90 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<%
+function getSportClass(sport) {
+    if (!sport) return 'sport-cricket-football';
+    if (sport.includes('Cricket') || sport.includes('Football')) return 'sport-cricket-football';
+    if (sport.includes('Basketball')) return 'sport-basketball';
+    if (sport.includes('Badminton')) return 'sport-badminton';
+    if (sport.includes('Volleyball')) return 'sport-volleyball';
+    if (sport.includes('Swimming')) return 'sport-swimming';
+    if (sport.includes('Indoor')) return 'sport-indoor';
+    return 'sport-cricket-football';
+}
+%>
+
+<div class="page-header mb-4">
+    <h1 class="page-title">
+        <% if (sport) { %>
+            <%= sport %> Venues
+        <% } else { %>
+            Venues
+        <% } %>
+    </h1>
+    <p class="page-subtitle">Explore sports turfs, courts, and grounds.</p>
+</div>
+
+<!-- Category Filters Bar -->
+<div class="category-filter-bar mb-4 p-2 rounded-3 d-flex flex-wrap gap-2 align-items-center">
+    <span class="small fw-semibold text-muted px-2"><i class="fa-solid fa-filter me-1"></i> Filter:</span>
+    <a href="/listings" class="filter-chip <%= !sport ? 'active' : '' %>">
+        All
+    </a>
+    <a href="/listings?sport=Cricket/Football" class="filter-chip <%= sport === 'Cricket/Football' ? 'active' : '' %>">
+        Cricket & Football
+    </a>
+    <a href="/listings?sport=Badminton" class="filter-chip <%= sport === 'Badminton' ? 'active' : '' %>">
+        Badminton
+    </a>
+    <a href="/listings?sport=Basketball" class="filter-chip <%= sport === 'Basketball' ? 'active' : '' %>">
+        Basketball
+    </a>
+    <a href="/listings?sport=Volleyball" class="filter-chip <%= sport === 'Volleyball' ? 'active' : '' %>">
+        Volleyball
+    </a>
+    <a href="/listings?sport=Swimming" class="filter-chip <%= sport === 'Swimming' ? 'active' : '' %>">
+        Swimming
+    </a>
+    <a href="/listings?sport=Indoor%20Sports" class="filter-chip <%= sport === 'Indoor Sports' ? 'active' : '' %>">
+        Indoor Sports
+    </a>
+</div>
+
+<!-- Venue Cards Directory Grid -->
+<% if (initData && initData.length > 0) { %>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
+        <% for(let loc of initData) { %>
+            <div class="col">
+                <a href="/listings/<%= loc._id %>" class="venue-card-link">
+                    <div class="venue-card <%= getSportClass(loc.sports) %>">
+                        <div class="venue-card-img-wrap">
+                            <img src="<%= loc.image || 'https://www.revturf.com/wp-content/uploads/2022/05/Turf-football-gound-IMG_5312-2-1536x1152.jpg' %>" 
+                                 alt="<%= loc.title %>" 
+                                 class="venue-card-img" 
+                                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=800&q=80';">
+                        </div>
+
+                        <div class="venue-card-body">
+                            <h5 class="venue-card-title">
+                                <span class="sport-color-dot" title="<%= loc.sports || 'Sports' %>"></span>
+                                <%= loc.title %>
+                            </h5>
+                            <% if (loc.sports) { %>
+                                <div class="small text-muted mb-2"><%= loc.sports %></div>
+                            <% } %>
+                            <div class="venue-card-footer">
+                                <span class="venue-price">&#8377;<%= loc.price ? loc.price.toLocaleString("en-IN") : '0' %>/hour</span>
+                                <span class="btn-arrow">&rarr;</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        <% } %>
+    </div>
+<% } else { %>
+    <div class="text-center py-5 border border-secondary border-opacity-25 rounded-3">
+        <h5 class="text-light">No venues listed yet</h5>
+        <p class="text-muted">Click "+ Add Venue" in the top bar to add the first listing.</p>
+    </div>
+<% } %>
